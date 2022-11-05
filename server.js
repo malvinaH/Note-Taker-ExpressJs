@@ -7,11 +7,12 @@ var uuidv1 = require('uuidv1')
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-
+// middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
+// routes
 app.get("/notes", (req, res) => {
     res.sendFile(path.join(__dirname, "./public/notes.html"));
 });
@@ -30,6 +31,24 @@ app.post('/api/notes', (req, res) => {
 
     fs.writeFileSync(path.join(__dirname, './db/db.json'), JSON.stringify(parseNotes), "utf-8");
     res.json("You have successfully added a note!");
+});
+
+
+app.delete("/api/notes/:id", function (req, res) {
+    let deletedNote = parseInt(req.params.id);
+
+    for (let i = 0; i < dbJson.length; i++) {
+        if (deletedNote === dbJson[i].id) {
+            dbJson.splice(i, 1);
+
+            let noteJson = JSON.stringify(dbJson, null, 2);
+            fs.writeFile("./db/db.json", noteJson, function (err) {
+                if (err) throw err;
+                console.log("Note successfully deleted!");
+                res.json(dbJson);
+            });
+        }
+    }
 });
 
 app.get("*", (req, res) => {
