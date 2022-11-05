@@ -23,8 +23,8 @@ This App is used for note taking (write) and save them for future use. It is cre
 
 Go to https://hidden-savannah-28554.herokuapp.com/ . Click 'Get Started'. Write a note title and Note text where it's indicated. To save click on the floppy disk on top right side and to add another note click the plus sign next to it. If needed to delete click the trach icon next to the note you wish to delete.
 
-![First half of the webpage](.public/assets/images/Screenshot_20221105_130606.png?raw=true "Notes 1")
-![Second half of the webpage](.public/assets/images/Screenshot_20221105_130730.png?raw=true "Notes 2")
+![Page 1](./public/assets/images/Screenshot_20221105_130606.png?raw=true "Notes 1")
+![Page 2](./public/assets/images/Screenshot_20221105_130730.png?raw=true "Notes 2")
 
   ## License
 
